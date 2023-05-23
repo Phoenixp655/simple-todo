@@ -12,8 +12,8 @@ const getAllTodo = asyncHandle( async (req, res) => {
 const createTodo = asyncHandle( async (req, res) => {
     const reqBody = req.body
     await todoModel.create({
-        name: reqBody.name,
-        is_done: reqBody.isDone
+        item: reqBody.item,
+        isCompleted: reqBody.isCompleted
     })
     .then(data => res.status(200).json({data: data}))
 })
@@ -21,11 +21,12 @@ const createTodo = asyncHandle( async (req, res) => {
 // update todo
 const updateTodo = asyncHandle( async (req, res) => {
     const reqBody = req.body;
+    console.log(reqBody)
     await todoModel.updateOne({
         _id: req.params.id},
-        {$set: {name: reqBody.name, is_done: reqBody.isDone}
+        {$set: {item: reqBody.item, isCompleted: reqBody.isCompleted}
     })
-    .then(data => res.status(200).json({mss: 'update todo success!'}))
+    .then(data => res.status(200).json({data: data}))
 })
 
 
@@ -34,7 +35,7 @@ const deleteTodo = asyncHandle( async (req, res) => {
     await todoModel.deleteOne({
         _id: req.params.id
     })
-    .then(data => res.status(200).json({mss: 'delete todo success!'}))
+    .then(data => res.status(200).json({data: data}))
 })
 
 module.exports = {

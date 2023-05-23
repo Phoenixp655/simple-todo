@@ -3,8 +3,8 @@ const schema = mongoose.Schema;
 
 
 const todoSchema = new schema ({
-    name : String,
-    is_done: Boolean,
+    item : String,
+    isCompleted: {type: Boolean, default: 0},
 });
 
 module.exports = mongoose.model('Todo', todoSchema)

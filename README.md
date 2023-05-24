@@ -1,3 +1,4 @@
+<base target="_blank">
 # Simple To Do App
 
 This app allows you to create, delete, and check off your tasks. You can also delete all the completed tasks at once.

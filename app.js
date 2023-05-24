@@ -15,8 +15,10 @@ app.set('views', __dirname + '/src/views')
 
 // session
 const sess = {
-    secret: "test",
-    cookie: {}
+    secret: process.env.sessionSecret,
+    resave: true,
+    saveUninitialized: true,
+    cookie: { }
 }
 
 
@@ -34,7 +36,6 @@ app.use('/api/v1', require('./src/routers/todoRouter'))
 
 // page router
 app.get('/', (req, res) => {
-    console.log(process.env.NODE_ENV)
     res.render('index')
 })
 

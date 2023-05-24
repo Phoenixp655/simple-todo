@@ -20,7 +20,7 @@ const sess = {
 }
 
 
-if(app.get('env') == 'production'){
+if(process.env.NODE_ENV == 'production'){
     app.set('trust proxy', 1);
     sess.cookie.secure = true;
 }
@@ -32,16 +32,9 @@ app.use('/api/v1', require('./src/routers/todoRouter'))
 
 
 
-
-
-
-
-
-
-
 // page router
 app.get('/', (req, res) => {
-    console.log(req.session.id)
+    console.log(process.env.NODE_ENV)
     res.render('index')
 })
 

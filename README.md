@@ -12,5 +12,4 @@ This app allows you to create, delete, and check off your tasks. You can also de
 ## Tech
 - [javascript]
 - [CSS]
-- [Express]
-- [node.js](Express)
+- [node.js] - Express

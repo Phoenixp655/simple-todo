@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   .then(data => data.json())
   .then(data => {
     localStorage.setItem("todos", JSON.stringify(data.data));
-    console.log(data)
   })
   document
     .getElementById("theme-switcher")
@@ -38,7 +37,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       const cards = [...this.querySelectorAll(".card")];
       const currPos = cards.indexOf(draggingCard);
       const newPos = cards.indexOf(e.target);
-      console.log(currPos, newPos);
       if (currPos > newPos) {
         this.insertBefore(draggingCard, e.target);
       } else {
@@ -65,7 +63,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
     .then(data => data.json())
     .then(data => {
-      console.log(data)
         txtInput.value = "";
         const todos = !localStorage.getItem("todos")
           ? []
@@ -144,12 +141,25 @@ async function removeTodo(index, id) {
 
 /* removeManyTodo FUNCTION TO REMOVE MANY TODOS */
 
-function removeManyTodo(indexes) {
+async function removeManyTodo(indexes) {
   let todos = JSON.parse(localStorage.getItem("todos"));
-  todos = todos.filter(function (todo, index) {
-    return !indexes.includes(index);
-  });
-  localStorage.setItem("todos", JSON.stringify(todos));
+  let todosId = todos.filter(function (todo, index) {
+    return indexes.includes(index);
+  }).map(e => e = e._id)
+  await fetch('/api/v1/todos', {
+    method: "DELETE",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({todosId: todosId})
+  })
+  .then(data => {
+    todos = todos.filter(function (todo, index) {
+      return !indexes.includes(index);
+    });
+    localStorage.setItem("todos", JSON.stringify(todos));
+  })
 }
 
 /* addTodo() FUNCTION TO LIST/CREATE TODOS AND ADD EVENT LISTENERS */
@@ -161,7 +171,6 @@ function addTodo(todos = JSON.parse(localStorage.getItem("todos"))) {
   const itemsLeft = document.getElementById("items-left");
   // create cards
   todos.forEach(function (todo) {
-    console.log(todo)
     const card = document.createElement("li");
     const cbContainer = document.createElement("div");
     const cbInput = document.createElement("input");

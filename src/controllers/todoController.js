@@ -38,9 +38,23 @@ const deleteTodo = asyncHandle( async (req, res) => {
     .then(data => res.status(200).json({data: data}))
 })
 
+const deleteManyTodo = asyncHandle( async (req, res) => {
+    // const parseJSON = JSON.parse(req.body.todosId)
+    // console.log(req.body.todosId)
+    await todoModel.deleteMany({
+        _id: {$in: req.body.todosId}
+    })
+    .then(data => {
+        res.status(200)
+    })
+    .catch(e => {
+        res.status(500)
+    })
+})
 module.exports = {
     getAllTodo,
     createTodo,
     updateTodo,
-    deleteTodo
+    deleteTodo,
+    deleteManyTodo
 }

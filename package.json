@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "forever start app.js",
+    "list": "forever list",
     "dev": "nodemon app.js",
     "tailwind:build": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css",
     "tailwind:dev": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch"

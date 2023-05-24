@@ -14,4 +14,4 @@ This app allows you to create, delete, and check off your tasks. You can also de
 - [CSS]
 - [node.js] - Express
 
-## [Link to website](https://simpletodo.up.railway.app/)
+## [Link to website](https://simpletodo.up.railway.app/ target="_blank")

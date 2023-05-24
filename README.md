@@ -1,4 +1,4 @@
-# Simple To Do App (https://simpletodo.up.railway.app/)
+[# Simple To Do App] (https://simpletodo.up.railway.app/)
 
 This app allows you to create, delete, and check off your tasks. You can also delete all the completed tasks at once.
 

@@ -4,7 +4,7 @@ const todoModel = require('../models/todoSchema')
 
 // get all todos
 const getAllTodo = asyncHandle( async (req, res) => {
-    todoModel.find({})
+    todoModel.find({guestSession: req.session.id})
     .then(data => res.status(200).json({data: data}))
 })
 
@@ -13,7 +13,8 @@ const createTodo = asyncHandle( async (req, res) => {
     const reqBody = req.body
     await todoModel.create({
         item: reqBody.item,
-        isCompleted: reqBody.isCompleted
+        isCompleted: reqBody.isCompleted,
+        guestSession: req.session.id,
     })
     .then(data => res.status(200).json({data: data}))
 })

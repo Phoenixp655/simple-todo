@@ -1,4 +1,3 @@
-<base target="_blank">
 # Simple To Do App
 
 This app allows you to create, delete, and check off your tasks. You can also delete all the completed tasks at once.
@@ -14,5 +13,5 @@ This app allows you to create, delete, and check off your tasks. You can also de
 - [javascript]
 - [CSS]
 - [node.js] - Express
-
+<base target="_blank">
 ## [Link to website](https://simpletodo.up.railway.app/)

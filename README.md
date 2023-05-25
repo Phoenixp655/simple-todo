@@ -11,7 +11,9 @@ This app allows you to create, delete, and check off your tasks. You can also de
 - browser all todo, incompleted todo, completed todo
 ## Tech
 - [javascript]
+- [htlml]
 - [CSS]
 - [node.js] - Express
+- [mongodb]
 
 ## [Link to website](https://simpletodo.up.railway.app/)
